@@ -16,10 +16,10 @@ function slug(schema, options={}) {
   schema.add({ slug: String });
 
   schema.methods.generateSlug = function(string) {
-    return string.toLowerCase()                         // Convert to lowercase
-      .trim()                                // Remove leading/trailing whitespace
-      .replace(/[^\w\s-]/g, '')              // Remove non-word chars (except spaces and dashes)
-      .replace(/[\s_-]+/g, '-')              // Replace spaces/underscores with a single dash
+    return string.toLowerCase() 
+      .trim()  
+      .replace(/[^\w\s-]/g, '') 
+      .replace(/[\s_-]+/g, '-') 
       .replace(/^-+|-+$/g, '');
   }
 
@@ -30,9 +30,10 @@ function slug(schema, options={}) {
   schema.pre('save', function(next) {
     if (this.isNew && options.new == true) {
       this.setSlug();
-    } else {
+    } else if (options.new == false) {
       this.setSlug();
     }
+
     next();
   })
 
