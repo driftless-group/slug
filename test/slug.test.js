@@ -16,7 +16,7 @@ describe('slug', function() {
     var city = new City({name: 'New Orleans'});
     try {
     city.save().then(() => {
-      console.log(city);
+      assert.equal(city.slug, 'new-orleans')
       done();
     }).catch(doneMessage(done));
     } catch(error) {
