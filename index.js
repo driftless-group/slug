@@ -1,9 +1,4 @@
 
-
-
-
-
-
 function slug(schema, options={}) {
   if (options.attribute == undefined) {
     options.attribute = 'name';
