@@ -9,6 +9,10 @@ function slug(schema, options={}) {
     options.attribute = 'name';
   }
 
+  if (options.new == undefined) {
+    options.new = true;
+  }
+
   schema.add({ slug: String });
 
   schema.methods.generateSlug = function(string) {
@@ -24,7 +28,11 @@ function slug(schema, options={}) {
   }
 
   schema.pre('save', function(next) {
-    this.setSlug();
+    if (this.isNew && options.new == true) {
+      this.setSlug();
+    } else {
+      this.setSlug();
+    }
     next();
   })
 
