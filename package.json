@@ -1,6 +1,6 @@
 {
   "name": "@drifted/slug",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "",
   "homepage": "https://github.com/driftless-group/slug#readme",
   "bugs": {
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/driftless-group/slug.git"
   },
-  "license": "UNLICENSED",
+  "license": "GPL-3.0",
   "author": "Scott Ballantyne",
   "type": "commonjs",
   "main": "index.js",
