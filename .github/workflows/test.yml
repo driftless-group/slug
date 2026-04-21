@@ -6,13 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: ci
     steps:
+      - env: MONGO_URL: ${{ env.MONGO_URL }}
       - uses: actions/checkout@v4 # Gets a copy of your code
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      
       - run: npm install
       - run: echo Running tests with ${{ env.MONGO_URL }}
-      - env:
-          MONGO_URL: ${{ env.MONGO_URL }}
       - run: npx mocha
