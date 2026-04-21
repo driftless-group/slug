@@ -1,7 +1,7 @@
 {
   "name": "@drifted/slug",
-  "version": "0.0.13",
-  "description": "",
+  "version": "0.0.14",
+  "description": "seo utility plugin for mongoose",
   "homepage": "https://github.com/driftless-group/slug#readme",
   "bugs": {
     "url": "https://github.com/driftless-group/slug/issues"
