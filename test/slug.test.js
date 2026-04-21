@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 process.env.NODE_ENV = 'test';
 
 if (process.env.MONGO_URL == undefined) {
-  require('dotenv').config({path: path.join(__dirname, '.env')});
+  //require('dotenv').config({path: path.join(__dirname, '.env')});
 }
 
 require('@drifted/db');
