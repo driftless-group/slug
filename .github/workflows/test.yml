@@ -1,16 +1,36 @@
-name: Run Tests
-on: [push] # This triggers the tests on every push
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment: ci
+    env: 
+      MONGO_URL: ${{ env.MONGO_URL }}
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
     steps:
-      - env: MONGO_URL: ${{ env.MONGO_URL }}
-      - uses: actions/checkout@v4 # Gets a copy of your code
-      - uses: actions/setup-node@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
-      - run: npm install
-      - run: echo Running tests with ${{ env.MONGO_URL }}
-      - run: npx mocha
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm' # Automatically caches dependencies for faster runs
+
+      - name: Install Dependencies
+        run: npm install # Performs a clean install for consistent environments
+
+      - name: Run Tests
+        run: mocha
+
+
+
+
