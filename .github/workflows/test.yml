@@ -4,6 +4,7 @@ on: [push] # This triggers the tests on every push
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: test
     steps:
       - uses: actions/checkout@v4 # Gets a copy of your code
       - uses: actions/setup-node@v4
