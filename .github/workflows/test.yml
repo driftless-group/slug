@@ -1,0 +1,13 @@
+name: Run Tests
+on: [push] # This triggers the tests on every push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # Gets a copy of your code
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm test
