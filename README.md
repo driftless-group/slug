@@ -10,6 +10,4 @@ This is a mongoose plugin that allows you to have good seo for urls easily by co
    schema.plugin(require('@drifted/slug'), {attribute: 'name'});
 ```
 
----
-
 [![Run Tests](https://github.com/driftless-group/slug/actions/workflows/test.yml/badge.svg)](https://github.com/driftless-group/slug/actions/workflows/test.yml)
