@@ -22,7 +22,7 @@ function slug(schema, options={}) {
     this.slug = this.generateSlug(this[options.attribute])
   }
 
-  schema.pre('save', function(options) {
+  schema.pre('save', function(opts) {
     if (this.isNew && options.new == true) {
       this.setSlug();
     } else if (options.new == false) {
