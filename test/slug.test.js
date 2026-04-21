@@ -16,7 +16,7 @@ const {
   exception
 } = require('@drifted/qa');
 
-console.log(process.env.MONGO_URL);
+console.log('env',process.env);
 
 describe('slug', function() {
   it('should create a slug', function(done) {
