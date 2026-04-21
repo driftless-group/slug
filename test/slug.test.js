@@ -16,7 +16,7 @@ const {
   exception
 } = require('@drifted/qa');
 
-console.log('env',process.env);
+//console.log('env',process.env);
 
 describe('slug', function() {
   after((done) => {
