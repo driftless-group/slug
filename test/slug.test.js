@@ -16,7 +16,7 @@ const {
   exception
 } = require('@drifted/qa');
 
-//console.log('env',process.env);
+console.log('MONGO_URL', process.env.MONGO_URL);
 
 describe('slug', function() {
   after((done) => {
