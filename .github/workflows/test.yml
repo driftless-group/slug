@@ -6,7 +6,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env: 
-      MONGO_URL: ${{ env.MONGO_URL }}
+      MONGO_URL: ${{ vars.MONGO_URL }}
 
     strategy:
       matrix:
