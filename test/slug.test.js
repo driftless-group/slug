@@ -19,6 +19,12 @@ const {
 console.log('env',process.env);
 
 describe('slug', function() {
+  after((done) => {
+    City.deleteMany({}).then(() => {
+      done();
+    })
+  })
+
   it('should create a slug', function(done) {
     var city = new City({name: 'New Orleans'});
     try {
