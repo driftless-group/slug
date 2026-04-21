@@ -3,10 +3,12 @@ const assert = require('assert');
 
 const mongoose = require('mongoose');
 
-process.env.NODE_ENV = 'test';
+//process.env.NODE_ENV = 'test';
 
 if (process.env.MONGO_URL == undefined) {
-  require('dotenv').config({path: path.join(__dirname, '.env')});
+  require('dotenv').config({
+    path: path.join(__dirname, '..', 'config','.env.'+process.env.NODE_ENV)
+  });
 }
 
 require('@drifted/db');
