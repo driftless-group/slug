@@ -10,5 +10,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      
       - run: npm install
-      - run: npx mocha
+      - name: Run mocha
+        env:
+          MONGO_URL: ${{ secrets.MONGO_URL }}
+        run: npx mocha
