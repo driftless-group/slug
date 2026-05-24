@@ -18,6 +18,7 @@ function slug(schema, options={}) {
       .replace(/^-+|-+$/g, '');
   }
 
+  // need to verify uniqueness somehow.
   schema.methods.setSlug = function() {
     this.slug = this.generateSlug(this[options.attribute])
   }
