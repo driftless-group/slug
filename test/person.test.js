@@ -12,7 +12,7 @@ if (process.env.MONGO_URL == undefined) {
 }
 
 require('@drifted/db');
-const {City} = require(path.join(__dirname, 'city'));
+const {Person} = require(path.join(__dirname, 'Person'));
 
 const {
   exception
@@ -20,18 +20,18 @@ const {
 
 //console.log('MONGO_URL', process.env.MONGO_URL);
 
-describe('slug', function() {
+describe('slug:attrs', function() {
   after((done) => {
-    City.deleteMany({}).then(() => {
+    Person.deleteMany({}).then(() => {
       done();
     })
   })
 
-  it('should create a slug', function(done) {
-    var city = new City({name: 'New Orleans'});
+  it('should create a slug from multiple attrs', function(done) {
+    var person = new Person({first_name: 'Scott', last_name: 'Ballantyne'});
     try {
-      city.save().then(() => {
-        assert.equal(city.slug, 'new-orleans')
+      person.save().then(() => {
+        assert.equal(person.slug, 'scott-ballantyne')
         done();
       }).catch(exception(done));
     } catch(error) {

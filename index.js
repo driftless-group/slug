@@ -1,7 +1,12 @@
 
 function slug(schema, options={}) {
+
   if (options.attribute == undefined) {
-    options.attribute = 'name';
+    options.attribute = ['name'];
+  }
+
+  if (typeof options.attribute == 'string') {
+    options.attribute = [options.attribute];
   }
 
   if (options.new == undefined) {
@@ -20,7 +25,11 @@ function slug(schema, options={}) {
 
   // need to verify uniqueness somehow.
   schema.methods.setSlug = function() {
-    this.slug = this.generateSlug(this[options.attribute])
+    var self = this, attrs = [];
+
+    this.slug = options.attribute.map((attr) => { 
+      return self.generateSlug(self[attr]); 
+    }).join('-');
   }
 
   schema.pre('save', function(opts) {
