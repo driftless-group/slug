@@ -13,6 +13,10 @@ function slug(schema, options={}) {
     options.new = true;
   }
 
+  if (options.unique == undefined) {
+    options.unique = false;
+  }
+
   schema.add({ slug: String });
 
   schema.methods.generateSlug = function(string) {
@@ -29,7 +33,13 @@ function slug(schema, options={}) {
 
     this.slug = options.attribute.map((attr) => { 
       return self.generateSlug(self[attr]); 
-    }).join('-');
+    });
+
+    if (options.unique) {
+      this.slug.push(Math.random().toString(36).substring(2, 7));
+    }
+
+    this.slug = this.slug.join('-');
   }
 
   schema.pre('save', function(opts) {
